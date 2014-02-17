@@ -402,8 +402,14 @@ ul{
     z-index: 1;
 }
 
+.instruct-header{
+    font-size: 1.4em;
+    color: #44A682;
+}
 
-
+.instruct-body{
+    font-size: 1.1em
+}
 
 
 
