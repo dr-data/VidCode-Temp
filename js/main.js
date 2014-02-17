@@ -45,4 +45,16 @@ $( document ).ready(function() {
     	$(".video2").removeClass("hidden");
         $('.buttons').hide();
     });
+
+    $("#greeting").modal();
+
+    // $("#sortable").stop(function( event ,ui ){
+    //     var dropped=[];
+    //     $(".dropped").each(function(){
+    //     dropped.push($(this).attr('id'));
+    //     if ((dropped.indexOf('draggable2')!=-1)&&(dropped.indexOf('draggable4')!=-1)) {
+    //         console.log ('got em both!');
+    //     }
+    // });
+    // });
 });

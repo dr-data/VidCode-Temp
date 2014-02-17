@@ -37,8 +37,17 @@
 
           $(function() {
             $( "#sortable" ).sortable({
-              revert: true
+              revert: true,
+              stop: function( event, ui) {
+                 var dropped=[];
+            $(".dropped").each(function(){
+            dropped.push($(this).attr('id'));
+            if ((dropped.indexOf('draggable2')!=-1)&&(dropped.indexOf('draggable4')!=-1)) {
+              $("#code").modal();
+            }
             });
+          }
+          });
             $( "#draggable" ).draggable({
               connectToSortable: "#sortable",
               helper: "clone",
@@ -89,8 +98,8 @@ function blackAndWhiteProcessing() {\n\
 pixelate();";
 
 editor.setValue(code);
+		$(this).addClass("dropped");
               }
-
 
             });
 
@@ -156,6 +165,7 @@ function scrubProcessing() {\n\
 pixelate();";
 
 editor.setValue(code);
+	$(this).addClass("dropped");
               }
             });
             $( "ul, li" ).disableSelection();
@@ -289,7 +299,7 @@ editor.setValue(code);
         <h4 class="modal-title">Welcome!</h4>
       </div>
       <div class="modal-body instruct-body">
-        <p>Welcome to VidCode! We'll step you through this process. Let's start by importing a video.</p>
+        <p>Welcome to VidCode! We'll step you through this process. Let's start by bringing up a video. Click <b>Import a Video</b> below. </p>
         <button type="button" class="btn btn-method" data-dismiss="modal" aria-hidden="true">OK</button>
        </div>
     </div><!-- /.modal-content -->
@@ -305,7 +315,7 @@ editor.setValue(code);
         <h4 class="modal-title">Great!</h4>
       </div>
       <div class="modal-body instruct-body">
-        <p>Now let's get coding! Select the Filters feature.</p>
+        <p>Now let's get coding! Select the <b>Filters</b> feature.</p>
         <button type="button" class="btn btn-method" data-dismiss="modal" aria-hidden="true">OK</button>
        </div>
     </div><!-- /.modal-content -->
@@ -320,7 +330,7 @@ editor.setValue(code);
         <h4 class="modal-title">Perfect!</h4>
       </div>
       <div class="modal-body instruct-body">
-        <p>Time to get PIXELATED. Select Pixelate.</p>
+        <p>Time to get PIXELATED. Select <b>Pixelate</b>.</p>
         <button type="button" class="btn btn-method" data-dismiss="modal" aria-hidden="true">OK</button>
        </div>
     </div><!-- /.modal-content -->
@@ -335,16 +345,27 @@ editor.setValue(code);
         <h4 class="modal-title">Alright!</h4>
       </div>
       <div class="modal-body instruct-body">
-        <p>We're gonna need the Black & White and Scrubbed methods. Drag & drop them into the Visual Edit tab below.</p>
+        <p>We're gonna need the <b>Black & White</b> and <b>Scrubbed</b> methods. Drag & drop them into the <code>Visual Edit</code> tab below.</p>
         <button type="button" class="btn btn-method" data-dismiss="modal" aria-hidden="true">OK</button>
        </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-<!-- Reamaining Modals -->
-<!--After drag&drop: Now check out the Code Edit. You can browse and edit the code and get some desrciptions of what's happening -->
-<!--After hitting code edit: Now hit that RUN button to what the action is all about -->
+                   <div class="modal fade" id="code" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header instruct-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img class="xbtn" src="img/xbtn.png"></button>
+        <h4 class="modal-title">Way To Go!</h4>
+      </div>
+      <div class="modal-body instruct-body">
+        <p>To see what these functions are really doing, check out the <code>Code Edit</code> tab. You can browse and edit the code and get some descriptions of what's happening. Once you're done, you're ready to hit that <b>RUN</b> button to see what all the action is about!</p>
+        <button type="button" class="btn btn-method" data-dismiss="modal" aria-hidden="true">OK</button>
+       </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
                     <div class="modal fade" id="run" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
